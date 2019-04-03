@@ -1,0 +1,36 @@
+{
+    "scenario": ["mood", "country", "lang", "artist", "genre", "chat"],
+    "mood": {
+        "happy": [],
+        "sad": [],
+        "angry": []
+    },
+    "country": {
+        "taiwan": [],
+        "japan": [],
+        "korea": [],
+        "america": [],
+        "europe": []
+    },
+    "lang": {
+        "zh_TW": [],
+        "en": [],
+        "ja": [],
+        "kr": [],
+        "fr": [],
+    },
+    "artist": {
+
+    },
+    "genre": {
+        "rock": [],
+        "EDM": [],
+        "R&B": [],
+        "folk": [],
+        "metal": [],
+        "lyric": []
+    },
+    "chat": [
+        ''
+    ]
+}
