@@ -5,10 +5,10 @@
         "希望這首歌能佔領你心中的一塊 \n"
     ],
     "song": {
-        "taiwan": ["5566 - 我難過 \n https://www.youtube.com/watch?v=T0LfHEwEXXw"],
-        "japan": ["Hakubi - 光芒 \n https://www.youtube.com/watch?v=90YqWcELqYI"],
-        "korea": ["G-DRAGON - 삐딱하게 \n https://www.youtube.com/watch?v=RKhsHGfrFmY"],
-        "america": ["Bring Me The Horizon - Shadow Moses  \n https://www.youtube.com/watch?v=-k9qDxyxS3s"],
-        "europe": ["Beatles - Yesterday \n https://www.youtube.com/watch?v=wXTJBr9tt8Q"]
+        "taiwan": ["5566 - 我難過 \nhttps://www.youtube.com/watch?v=T0LfHEwEXXw"],
+        "japan": ["Hakubi - 光芒 \nhttps://www.youtube.com/watch?v=90YqWcELqYI"],
+        "korea": ["G-DRAGON - 삐딱하게 \nhttps://www.youtube.com/watch?v=RKhsHGfrFmY"],
+        "america": ["Bring Me The Horizon - Shadow Moses  \nhttps://www.youtube.com/watch?v=-k9qDxyxS3s"],
+        "europe": ["Beatles - Yesterday \nhttps://www.youtube.com/watch?v=wXTJBr9tt8Q"]
     }
 }

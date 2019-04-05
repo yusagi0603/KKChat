@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import random
+import logging
 
 import jieba
 import numpy as np
@@ -89,6 +90,11 @@ class YuBot():
                     "confidence": cosine_similarities[related_docs_indices]} 
 
         return resp
+    
+    def relife(self):
+
+        logging.warn('Scenario Reset')
+        self.scenario = None
 
 if __name__ == '__main__':
 

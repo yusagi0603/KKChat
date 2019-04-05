@@ -51,8 +51,9 @@ def handle_message(event):
         resp = Bot.get_resp(query=msg).get('answer') # (text, similarity) 
 
     else: # relife
-        resp = '"你可以透過輸入以下的關鍵字來讓我推薦你不一樣的歌喔: 「心情」、「現在在做的事」、「國家」、「歌手」、「曲風」、「語言」，或是輸入「來聊天」來告訴我透過你的故事推薦你不同的歌"'
-    
+        resp = '你可以透過輸入以下的關鍵字來讓我推薦你不一樣的歌喔: 「心情」、「現在在做的事」、「國家」、「歌手」、「曲風」、「語言」\n或是輸入「來聊天」來告訴我透過你的故事推薦你不同的歌\n小提醒:輸入「聽歌」可以重新來一次'
+        Bot.relife() # reset scenario
+
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=resp))
