@@ -1,36 +1,36 @@
 {
-    "scenario": ["mood", "country", "lang", "artist", "genre", "chat"],
+    
     "mood": {
-        "happy": [],
-        "sad": [],
-        "angry": []
+        "happy": ["開心", "心情好", "心情好", "happ"],
+        "sad": ["難過","不開心","心情不好"],
+        "angry": ["生氣","憤怒"],
+        "chill": ["chill"]
     },
     "country": {
-        "taiwan": [],
-        "japan": [],
-        "korea": [],
-        "america": [],
-        "europe": []
+        "taiwan": ["台灣","臺灣","歹丸","taiwan", "Taiwan"],
+        "japan": ["日本","japan","Japan"],
+        "korea": ["韓國","韓","Korea","korea"],
+        "america": ["美國","usa","america","USA"],
+        "europe": ["歐洲","法國","英國","德國","UK"]
     },
     "lang": {
-        "zh_TW": [],
-        "en": [],
-        "ja": [],
-        "kr": [],
-        "fr": [],
+        "zh_TW": ["中文"],
+        "en": ["英文"],
+        "ja": ["日文"],
+        "kr": ["韓文"]
     },
     "artist": {
 
     },
     "genre": {
-        "rock": [],
-        "EDM": [],
-        "R&B": [],
-        "folk": [],
-        "metal": [],
-        "lyric": []
+        "rock": ["搖滾"],
+        "EDM": ["電音"],
+        "R&B": ["R&B"],
+        "folk": ["民謠"],
+        "metal": ["金屬"],
+        "lyric": ["抒情"]
     },
-    "chat": [
-        ''
-    ]
+    "chat": {
+        
+    }
 }

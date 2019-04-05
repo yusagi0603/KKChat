@@ -3,7 +3,7 @@ import json
 import random
 
 import jieba
-import numpy
+import numpy as np
 from pymongo import MongoClient
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
@@ -13,7 +13,7 @@ from config import config, db
 class YuBot():
 
     @classmethod
-    def activate_bot(cls):
+    def activate_bot(cls, scenario=None):
 
         '''
         # connect to mongoDB with data saved
@@ -29,53 +29,66 @@ class YuBot():
             resp = json.load(f)
         default_resp = resp.get('scenario_default')
 
-        return cls(default_resp)
+        return cls(default_resp, scenario=scenario)
 
-    def __init__(self, default_resp, all_coll=None,interested_topic=None, topic_detail=None):
+    def __init__(self, default_resp, all_coll=None,interested_topic=None, topic_detail=None, scenario=None):
         self.default_resp = default_resp
         self.all_coll = all_coll # different collection in mongoDB with different data
         self.topic = interested_topic # store through process
         self.topic_detail = topic_detail # store through process
-        self.scenario = None
+        self.scenario = scenario # store through process
 
     def get_resp(self, query):
+        '''
 
+        '''
         msg_scenario = config.scenario_dict.get(query)
-        # print(msg_scenario)
+        print("line 45 - msg_scenario".format(msg_scenario))
         
         # classify scenario at first
         if msg_scenario is not None: # init or reset
             resp_candidate = self.default_resp.get(msg_scenario)# list -> random select one
             resp = {"answer": random.choice(resp_candidate), 
                     "confidence":1.0}# default msg based on each scenario
-            self.scenario = msg_scenario
+            self.scenario = msg_scenario # save for the next answer
 
         else : # already in scenario
+
+            # find detail keyword in given scenario
+            with open('data/scenario_keyword.json', encoding='utf-8') as f:
+                kw_dict = json.load(f)
+            scn_kw_dict = kw_dict.get(self.scenario) # get kw_dict based on last answer accroding to scenario
+            all_kw = list(scn_kw_dict.values()) # ex: ([happy related], [sad realted], .., [query])
+            all_kw.append(jieba.lcut(query))
+            np_kw = np.array([word for word_list in all_kw for word in word_list])
             
-            '''
-            # # Neural Network embedding version
-            # connect different collection based on scenario
-            # compare similarity of embedding vector of between query & song/playlist
-            # return the top n nearest answer.
-            '''
-            with open("data/resp/{}.json".format(self.scenario), encoding='utf-8') as f:
-                resp_dict = json.load(f)  
-            
-            vectorizer = TfidfVectorizer()
-            all_query = np.array((list(resp_dict.keys())).append(query))
-            tfidf = vectorizer.fit_transform(all_query).toarray()
-            
-            cosine_similarities = linear_kernel(tfidf[-1], tfidf).flatten() # simlarity between query and all the other
+            # td-idf to find the similar answer
+            vectorizer = TfidfVectorizer()  
+            tfidf = vectorizer.fit_transform(np_kw).toarray()
+            cosine_similarities = linear_kernel(tfidf[-1].reshape(1,-1), tfidf).flatten() # simlarity between query and all the other
             related_docs_indices = cosine_similarities.argsort()[-2] # top1(excluse itself)
+
+            for key_detail, kw_list in kw_dict.items(): # ex: ['日文'] -> 'ja' 
+                if list(all_kw)[related_docs_indices] in list(kw_list.values()): # get key based on value 
+                    for eng_code, chi_code in list(kw_list.items()):
+                        if list(all_kw)[related_docs_indices] == chi_code:
+                            resp_kw = eng_code
+        
+            with open("data/resp/{}.json".format(self.scenario), encoding='utf-8') as f:
+                resp_dict = json.load(f) # ex: mood_json
+                answer = "{introduction} {song}".format(
+                    introduction=random.choice(resp_dict.get('introduction')),
+                    song=random.choice(resp_dict.get('song').get(resp_kw))
+                    )
             
-            resp = {"answer":list(all_query)[related_docs_indices], 
-                    "confidence":cosine_similarities[-2]}  # resp, similarity
-            
+            resp = {"answer": answer, 
+                    "confidence": cosine_similarities[related_docs_indices]} 
+
         return resp
 
 if __name__ == '__main__':
 
-    Bot = YuBot.activate_bot()
-    resp = Bot.get_resp(query='來聊天')
+    Bot = YuBot.activate_bot(scenario='lang')
+    resp = Bot.get_resp(query='日文')
     print(resp)
     # bot.get_resp(query='心情')
