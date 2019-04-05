@@ -1,0 +1,14 @@
+{   
+    "introduction": [
+        "推薦這首給你 \n",
+        "這首也許或許會是你人生難忘的一段 \n",
+        "希望這首歌能佔領你心中的一塊 \n"
+    ],
+    "song": {
+        "taiwan": ["5566 - 我難過 \n https://www.youtube.com/watch?v=T0LfHEwEXXw"],
+        "japan": ["Hakubi - 光芒 \n https://www.youtube.com/watch?v=90YqWcELqYI"],
+        "korea": ["G-DRAGON - 삐딱하게 \n https://www.youtube.com/watch?v=RKhsHGfrFmY"],
+        "america": ["Bring Me The Horizon - Shadow Moses  \n https://www.youtube.com/watch?v=-k9qDxyxS3s"],
+        "europe": ["Beatles - Yesterday \n https://www.youtube.com/watch?v=wXTJBr9tt8Q"]
+    }
+}
