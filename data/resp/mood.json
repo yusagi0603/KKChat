@@ -1,0 +1,12 @@
+{   
+    "introduction": [
+        "推薦這首給你 \n"
+    ],
+    "song": {
+        "happy": ["心情不錯是吧，那推薦你這首Twice的YES or YES \nhttps://www.youtube.com/watch?v=mAKsZ26SabQ"],
+        "sad": ["人都會有難過的時候是吧!一起聽聽看\n美波的ライラック來釋放自己吧\nhttps://www.youtube.com/watch?v=GQ3V50XoLOM"],
+        "angry": ["生氣的時候就該來點金屬囉! \n Bring Me The Horizon - Throne \nhttps://www.youtube.com/watch?v=Ow_qI_F2ZJI"],
+        "chill": ["來來來，Chill的時候就是要來吸一下甘蔗阿 \n Leo王 - 快樂的甘蔗人 \nhttps://www.youtube.com/watch?v=ui4nJWGvSYg"],
+        "high": ["High場就要來點EDM!\n Alan Walker - Faded \nhttps://www.youtube.com/watch?v=60ItHLz5WEA"]
+    }
+}

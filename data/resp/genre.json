@@ -1,0 +1,15 @@
+{   
+    "introduction": [
+        "推薦這首給你 \n",
+        "這首也許或許會是你人生難忘的一段 \n",
+        "希望這首歌能佔領你心中的一塊 \n"
+    ],
+    "song": {
+        "rock": ["ONE OK ROCK - Taking Off \nhttps://www.youtube.com/watch?v=_1NU-YkY3dk"],
+        "EDM": ["和風EDM \nhttps://www.youtube.com/watch?v=nQym1UgunFw"],
+        "R&B": ["Jay Chou 周杰倫【心雨 Rainy Mood】\nhttps://www.youtube.com/watch?v=xVTI5eSzwzQ"],
+        "folk": ["Keith Urban -Somebody Like You \nhttps://www.youtube.com/watch?v=eiBinM-f-Pk"],
+        "metal": ["Bullet For My Valentine - The Last Fight \nhttps://www.youtube.com/watch?v=gT3zXBd2ksk"],
+        "lyric": ["嘴哥樂團Mister Mouth feat.魏如萱Waa Wei \nhttps://www.youtube.com/watch?v=zAlyq3BecEw"]
+    }
+}
