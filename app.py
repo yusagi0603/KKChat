@@ -17,6 +17,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(config.LINE_SETTING.get('TOKEN')) # TOKEN
 handler = WebhookHandler(config.LINE_SETTING.get('SECRET')) # SECRET
 
+Bot = bot.YuBot.activate_bot()
 
 @app.route("/callback", methods=['POST'])
 def callback(): 
@@ -45,8 +46,13 @@ def handle_message(event):
 
     # resp based on different scenario
     print('Message: {}'.format(msg))
-    Bot = bot.YuBot.activate_bot()
-    resp = Bot.get_resp(query=msg).get('answer') # (text, similarity) 
+    
+    if msg != '聽歌': # not relife
+        resp = Bot.get_resp(query=msg).get('answer') # (text, similarity) 
+
+    else: # relife
+        resp = '你可以透過輸入以下的關鍵字來讓我推薦你不一樣的歌喔: 「心情」、「現在在做的事」、「國家」、「歌手」、「曲風」、「語言」\n或是輸入「來聊天」來告訴我透過你的故事推薦你不同的歌\n小提醒:輸入「聽歌」可以重新來一次'
+        Bot.relife() # reset scenario
 
     line_bot_api.reply_message(
         event.reply_token,
